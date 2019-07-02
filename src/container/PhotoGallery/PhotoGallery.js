@@ -7,7 +7,7 @@ class PhotoSplash extends Component {
 	render() {
 		return (
 			<Layout>
-				<InputField 
+				<InputField
 					keyCodeSearch={this.KeyCodeSearch} buttonSearch={this.ButtonSearch} />
 			</Layout>
 		)

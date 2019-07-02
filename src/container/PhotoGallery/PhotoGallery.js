@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from '../../axiosInstance/axiosInstance';
 import Layout from '../../components/Layout/Layout';
 import InputField from '../../components/InputField/InputField';
 import Gallery from '../../components/Gallery/Gallery';

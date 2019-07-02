@@ -130,4 +130,8 @@
   object-fit: cover;
   display: block; }
 
+@media (max-width: 650px) {
+  input[type='search'] {
+    width: 70%; } }
+
 /*# sourceMappingURL=style.css.map */

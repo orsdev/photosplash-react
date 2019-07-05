@@ -9,14 +9,71 @@ class PhotoSplash extends Component {
 		search: null,
 		currentPage: 1,
 		prevNext: 1
-	}
+	};
 
+	GetData = (val) => {
+
+		//destruct 
+		const { currentPage } = this.state;
+
+		let key = '95b50323e9088ff9cb2368e19fc9f970a5c08b945fbc3fbc55972e1180989fbc';
+
+		//build up url
+		let url = `?query=${val.value}&page=${currentPage}&per_page=14&client_id=${key}`;
+
+		// make httpRequest and save response
+		axios.get(url)
+			.then((res) => {
+				this.setState({
+					search: res.data.results
+				});
+			});
+	};
+
+	ButtonSearch = () => {
+
+		let val = document.getElementById('search');
+
+		if (val.value) {
+			this.GetData(val);
+		}
+	};
 
 	render() {
+
+		//destruct
+		let copyState = { ...this.state };
+
+		let images = null;
+		let imageContainer = null;
+
+		//when search property is not empty, return map values
+		if (copyState['search'] !== null) {
+			images = copyState.search.map((img, index) => {
+				return (
+					<Gallery
+						key={img.id}
+						alt={img.id}
+						id={index}
+						pic={img.urls.regular} />
+				)
+			})
+		};
+
+		//wrap images in container if true
+		if (images) {
+			imageContainer = (
+				<div className='gallery'>
+					{images}
+				</div>
+			)
+		}
+
 		return (
 			<Layout>
 				<InputField
 					keyCodeSearch={this.KeyCodeSearch} buttonSearch={this.ButtonSearch} />
+				{imageContainer}
 			</Layout>
 		)
 	}

@@ -5,6 +5,12 @@ import InputField from '../../components/InputField/InputField';
 import Gallery from '../../components/Gallery/Gallery';
 
 class PhotoSplash extends Component {
+	state = {
+		search: null,
+		currentPage: 1,
+		prevNext: 1
+	}
+
 
 	render() {
 		return (
@@ -16,4 +22,4 @@ class PhotoSplash extends Component {
 	}
 }
 
-export default PhotoSplash;
+export default PhotoSplash; 

@@ -20,7 +20,7 @@ class PhotoSplash extends Component {
 		let key = '95b50323e9088ff9cb2368e19fc9f970a5c08b945fbc3fbc55972e1180989fbc';
 
 		//build up url
-		let url = `?query=${val.value}&page=${currentPage}&per_page=14&client_id=${key}`;
+		let url = `?query=${val.value}&page=${currentPage}&per_page=${per_page}&client_id=${key}`;
 
 		// make httpRequest and save response
 		axios.get(url)
@@ -39,16 +39,6 @@ class PhotoSplash extends Component {
 			this.GetData(val);
 		}
 	};
-
-	KeyCodeSearch = (event) => {
-
-		let val = document.getElementById('search');
-		let keyCode = event.keyCode;
-
-		if (keyCode === 13) {
-			this.GetData(val);
-		}
-	}
 
 	render() {
 

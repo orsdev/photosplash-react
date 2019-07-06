@@ -8,13 +8,14 @@ class PhotoSplash extends Component {
 	state = {
 		search: null,
 		currentPage: 1,
-		prevNext: 1
+		prevNext: 1,
+		per_page: 14
 	};
 
 	GetData = (val) => {
 
 		//destruct 
-		const { currentPage } = this.state;
+		const { currentPage, per_page } = this.state;
 
 		let key = '95b50323e9088ff9cb2368e19fc9f970a5c08b945fbc3fbc55972e1180989fbc';
 
@@ -38,6 +39,16 @@ class PhotoSplash extends Component {
 			this.GetData(val);
 		}
 	};
+
+	KeyCodeSearch = (event) => {
+
+		let val = document.getElementById('search');
+		let keyCode = event.keyCode;
+
+		if (keyCode === 13) {
+			this.GetData(val);
+		}
+	}
 
 	render() {
 

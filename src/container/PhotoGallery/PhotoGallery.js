@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from '../../axiosInstance/axiosInstance';
 import Layout from '../../components/Layout/Layout';
 import InputField from '../../components/InputField/InputField';
+import Spinner from '../../UI/Spinner/Spinner';
 import Gallery from '../../components/Gallery/Gallery';
 
 class PhotoSplash extends Component {
@@ -9,7 +10,9 @@ class PhotoSplash extends Component {
 		search: null,
 		currentPage: 1,
 		prevNext: 1,
-		per_page: 14
+		per_page: 14,
+		spinnerTimer: false,
+		searchTimer: false
 	};
 
 	GetData = (val) => {
@@ -25,9 +28,20 @@ class PhotoSplash extends Component {
 		// make httpRequest and save response
 		axios.get(url)
 			.then((res) => {
+
 				this.setState({
-					search: res.data.results
+					spinnerTimer: true,
+					searchTimer: false
 				});
+
+				setTimeout(() => {
+					this.setState({
+						search: res.data.results,
+						searchTimer: true,
+						spinnerTimer: false
+					});
+				}, 1100);
+
 			});
 	};
 
@@ -54,12 +68,22 @@ class PhotoSplash extends Component {
 
 		//destruct
 		let copyState = { ...this.state };
+		let images =  null;
 
-		let images = null;
-		let imageContainer = null;
+		//assign className
+		let classProp = 'spinner_gallery';
+
+		if(this.state.spinnerTimer){
+			images = <Spinner />;
+		}
 
 		//when search property is not empty, return map values
-		if (copyState['search'] !== null) {
+		if (this.state.searchTimer) {
+
+			//assign new className
+			classProp = 'gallery';
+
+			//assign new value to images
 			images = copyState.search.map((img, index) => {
 				return (
 					<Gallery
@@ -69,22 +93,17 @@ class PhotoSplash extends Component {
 						pic={img.urls.regular} />
 				)
 			})
-		};
 
-		//wrap images in container if true
-		if (images) {
-			imageContainer = (
-				<div className='gallery'>
-					{images}
-				</div>
-			)
-		}
+
+		};
 
 		return (
 			<Layout>
 				<InputField
 					keyCodeSearch={this.KeyCodeSearch} buttonSearch={this.ButtonSearch} />
-				{imageContainer}
+					<div className = {classProp}>
+					{images}
+					</div>
 			</Layout>
 		)
 	}

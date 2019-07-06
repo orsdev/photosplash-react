@@ -40,6 +40,16 @@ class PhotoSplash extends Component {
 		}
 	};
 
+	KeyCodeSearch = (event) => {
+
+		let val = document.getElementById('search');
+		let keyCode = event.keyCode;
+
+		if (keyCode === 13) {
+			this.GetData(val);
+		}
+	}
+
 	render() {
 
 		//destruct

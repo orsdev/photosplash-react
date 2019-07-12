@@ -217,6 +217,48 @@
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background: #ebe6e6;
+  position: relative; }
+
+.modal-dialog {
+  background: #f7f2f2;
+  color: black;
+  width: 99%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  padding: 0.5rem 0.2rem;
+  text-align: center; }
+
+.message {
+  position: relative;
+  padding: 1.6rem 1.6rem;
+  width: 200px;
+  background: white;
+  margin: 0 auto; }
+  .message p {
+    font-size: 1.3rem; }
+  .message a {
+    position: absolute;
+    top: 0;
+    right: 4px;
+    font-size: 1.8rem;
+    color: red;
+    text-decoration: none;
+    padding: 0 0.6rem;
+    padding-bottom: 5px;
+    line-height: 19px; }
+    .message a:active {
+      font-size: 2rem; }
+
 @media (max-width: 650px) {
   input[type='search'] {
     width: 70%; } }

@@ -10,7 +10,7 @@ const Modal = (props) => {
                 <div className='modal-dialog'>
                     <div className='message'>
                     <p> {props.error} </p>
-                    <a href='#' className='btn-close'>x</a>
+                    <button className='btn-close'>x</button>
                     </div>
                 </div>
             </div>

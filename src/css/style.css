@@ -246,17 +246,19 @@
   margin: 0 auto; }
   .message p {
     font-size: 1.3rem; }
-  .message a {
+  .message .btn-close {
     position: absolute;
     top: 0;
     right: 4px;
+    border: none;
+    background: transparent;
+    outline: none;
     font-size: 1.8rem;
     color: red;
-    text-decoration: none;
     padding: 0 0.6rem;
     padding-bottom: 5px;
     line-height: 19px; }
-    .message a:active {
+    .message .btn-close:active {
       font-size: 2rem; }
 
 @media (max-width: 650px) {

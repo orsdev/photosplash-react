@@ -4,6 +4,7 @@ import Layout from '../../components/Layout/Layout';
 import InputField from '../../components/InputField/InputField';
 import Spinner from '../../UI/Spinner/Spinner';
 import Gallery from '../../components/Gallery/Gallery';
+import Modal from '../../UI/Modal/Modal';
 
 class PhotoSplash extends Component {
 	state = {
@@ -112,11 +113,20 @@ class PhotoSplash extends Component {
 
 		return (
 			<Layout>
-				<InputField
-					keyCodeSearch={this.KeyCodeSearch} buttonSearch={this.ButtonSearch} />
-				<div className={classProp}>
-					{images}
-				</div>
+				{
+					this.state.error ?
+						<Modal 
+							error={this.state.error} 
+							toggle={this.toggle} />
+						:
+						<React.Fragment>
+							<InputField
+								keyCodeSearch={this.KeyCodeSearch} buttonSearch={this.ButtonSearch} />
+							<div className={classProp}>
+								{images}
+							</div>
+						</React.Fragment>
+				}
 			</Layout>
 		)
 	}

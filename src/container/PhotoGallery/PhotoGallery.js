@@ -71,6 +71,12 @@ class PhotoSplash extends Component {
 		}
 	}
 
+	toggle = () => {
+		this.setState({
+			error: null
+		})
+	}
+
 	render() {
 
 		//destruct

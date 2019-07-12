@@ -31,7 +31,7 @@ class PhotoSplash extends Component {
 
 				this.setState({
 					spinnerTimer: true,
-					searchTimer: false
+					searchTimer: false,
 				});
 
 				setTimeout(() => {
@@ -68,12 +68,12 @@ class PhotoSplash extends Component {
 
 		//destruct
 		let copyState = { ...this.state };
-		let images =  null;
+		let images = null;
 
 		//assign className
 		let classProp = 'spinner_gallery';
 
-		if(this.state.spinnerTimer){
+		if (this.state.spinnerTimer) {
 			images = <Spinner />;
 		}
 
@@ -101,9 +101,9 @@ class PhotoSplash extends Component {
 			<Layout>
 				<InputField
 					keyCodeSearch={this.KeyCodeSearch} buttonSearch={this.ButtonSearch} />
-					<div className = {classProp}>
+				<div className={classProp}>
 					{images}
-					</div>
+				</div>
 			</Layout>
 		)
 	}

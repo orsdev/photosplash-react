@@ -33,6 +33,7 @@ class PhotoSplash extends Component {
 				this.setState({
 					spinnerTimer: true,
 					searchTimer: false,
+					error: null
 				});
 
 				setTimeout(() => {
@@ -43,6 +44,11 @@ class PhotoSplash extends Component {
 					});
 				}, 1100);
 
+			})
+			.catch(error => {
+				this.setState({
+					error: `${error}`
+				})
 			});
 	};
 

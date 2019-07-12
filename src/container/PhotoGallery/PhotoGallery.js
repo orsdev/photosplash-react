@@ -12,7 +12,8 @@ class PhotoSplash extends Component {
 		prevNext: 1,
 		per_page: 14,
 		spinnerTimer: false,
-		searchTimer: false
+		searchTimer: false,
+		error: null
 	};
 
 	GetData = (val) => {

@@ -63,6 +63,9 @@
   .form-container .buttons .next:active {
     transform: scale(1.1); }
 
+.galleryContainer {
+  text-align: center; }
+
 .gallery {
   background-color: darkcyan;
   grid-column: full-start / full-end;

@@ -2,8 +2,10 @@
   width: 100%; }
 
 .form-container {
-  width: 80%;
-  margin: 30px auto; }
+  width: 99%;
+  padding: .4px 20px;
+  margin: 30px auto;
+  text-align: center; }
   .form-container .form-group {
     width: 100%;
     margin: 50px auto;

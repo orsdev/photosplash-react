@@ -217,13 +217,13 @@
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
-.modal {
+.modal-pop {
   width: 100vw;
   height: 100vh;
   background: #ebe6e6;
   position: relative; }
 
-.modal-dialog {
+.modal-pop-dialog {
   background: #f7f2f2;
   color: black;
   width: 99%;
@@ -246,7 +246,7 @@
   margin: 0 auto; }
   .message p {
     font-size: 1.3rem; }
-  .message .btn-close {
+  .message .close-btn {
     position: absolute;
     top: 0;
     right: 4px;
@@ -258,7 +258,7 @@
     padding: 0 0.6rem;
     padding-bottom: 5px;
     line-height: 19px; }
-    .message .btn-close:active {
+    .message .close-btn:active {
       font-size: 2rem; }
 
 @media (max-width: 650px) {

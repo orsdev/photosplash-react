@@ -1,11 +1,11 @@
-.modal {
+.modal-pop {
     width: 100vw;
     height: 100vh;
     background: rgb(235, 230, 230);
     position: relative;
   }
   
-  .modal-dialog {
+  .modal-pop-dialog {
     background: rgb(247, 242, 242);
     color: black;
     width: 99%;
@@ -31,7 +31,7 @@
       font-size: 1.3rem;
     }
   
-    .btn-close {
+    .close-btn {
       position: absolute;
       top: 0;
       right: 4px;

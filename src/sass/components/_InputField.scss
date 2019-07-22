@@ -17,7 +17,7 @@
     font-size: 1.3rem;
     vertical-align: baseline; }
   
- button {
+ button.search {
     padding: 1.1rem 1.5rem;
     margin: 0;
     background-color: #dc3545;
@@ -25,10 +25,10 @@
     border-radius: 4px;
     vertical-align: middle; }
   
- button:active {
+ button.search:active {
     transform: scale(1.1);
     transition: all .1s linear; }
-button:focus {
+button.search:focus {
     outline: none !important;
     border: none !important; }
   

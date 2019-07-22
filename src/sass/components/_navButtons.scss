@@ -1,0 +1,15 @@
+.navContainer {
+    background-color:lighten(darkcyan , 9%);
+    padding: 10px 0;
+
+    button:not(:last-child) {
+        margin-right: 5px;
+    }
+
+    button {
+        color: red;
+        padding: .1rem .9rem;
+        background-image: linear-gradient(30deg ,darkcyan , yellow);
+        font-size: 1.3rem;
+    }
+}

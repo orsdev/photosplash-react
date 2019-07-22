@@ -37,6 +37,7 @@ class PhotoSplash extends Component {
 					error: null
 				});
 
+        //wait a little before setting setState
 				setTimeout(() => {
 					this.setState({
 						search: res.data.results,
@@ -55,8 +56,10 @@ class PhotoSplash extends Component {
 
 	ButtonSearch = () => {
 
+    //get element from dom
 		let val = document.getElementById('search');
 
+    //call function if input field value is not empty
 		if (val.value) {
 			this.GetData(val);
 		}
@@ -64,9 +67,13 @@ class PhotoSplash extends Component {
 
 	KeyCodeSearch = (event) => {
 
-		let val = document.getElementById('search');
+    //get element from dom
+    let val = document.getElementById('search');
+    
+    //listen to button keycode
 		let keyCode = event.keyCode;
 
+    //if keycode is an enter button, call function
 		if (keyCode === 13) {
 			this.GetData(val);
 		}

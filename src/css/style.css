@@ -269,7 +269,10 @@
       font-size: 2rem; }
 
 @media (max-width: 650px) {
-  input[type='search'] {
-    width: 70%; } }
+  input[type="search"] {
+    width: 80% !important; }
+
+  .btn-group {
+    display: none; } }
 
 /*# sourceMappingURL=style.css.map */

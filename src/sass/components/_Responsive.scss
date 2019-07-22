@@ -1,7 +1,9 @@
 @media (max-width: 650px) {
+  input[type="search"] {
+    width: 80% !important;
+  }
 
-    input[type='search'] {
-      width: 70%;
-    }
-    
-    }
+  .btn-group {
+    display: none;
+  }
+}

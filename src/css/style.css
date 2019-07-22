@@ -9,7 +9,7 @@
     margin: 50px auto;
     display: inline-block;
     text-align: center; }
-  .form-container input[type='search'] {
+  .form-container input[type="search"] {
     width: 50%;
     padding: 1.4rem 1.3rem;
     box-shadow: 2px 4px 4px 0.1px #c8c8c8;
@@ -26,13 +26,18 @@
     vertical-align: middle; }
   .form-container button.search:active {
     transform: scale(1.1);
-    transition: all .1s linear; }
+    transition: all 0.1s linear; }
   .form-container button.search:focus {
     outline: none !important;
     border: none !important; }
   .form-container .fa-search {
     font-size: 2rem !important;
     color: white; }
+  .form-container .btn-group button:not(:last-child) {
+    margin-right: 0.4rem; }
+  .form-container .btn-group button {
+    padding: 0.6rem 0.7rem;
+    font-size: 1.2rem; }
   .form-container .buttons {
     box-sizing: border-box;
     text-align: center;
@@ -41,9 +46,9 @@
   .form-container .buttons button {
     background-color: orangered;
     color: white;
-    padding: .4rem 1.3rem;
-    border-radius: .4rem;
-    transition: transform .3s ease;
+    padding: 0.4rem 1.3rem;
+    border-radius: 0.4rem;
+    transition: transform 0.3s ease;
     font-size: 1.4rem;
     outline: none;
     border: none;

@@ -53,32 +53,4 @@
       font-size: 1.2rem;
     }
   }
-
-  .buttons {
-    box-sizing: border-box;
-    text-align: center;
-    padding: 1.4rem;
-    background-color: darkcyan;
-  }
-  .buttons button {
-    background-color: orangered;
-    color: white;
-    padding: 0.4rem 1.3rem;
-    border-radius: 0.4rem;
-    transition: transform 0.3s ease;
-    font-size: 1.4rem;
-    outline: none;
-    border: none;
-    width: 50px;
-  }
-  .buttons button:not(:last-child) {
-    margin-right: 40px;
-  }
-  .buttons button:hover {
-    background-color: #d63a00;
-  }
-  .buttons .prev:active,
-  .buttons .next:active {
-    transform: scale(1.1);
-  }
 }

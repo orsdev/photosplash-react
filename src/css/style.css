@@ -40,28 +40,6 @@
   .form-container .btn-group button {
     padding: 0.6rem 0.7rem;
     font-size: 1.2rem; }
-  .form-container .buttons {
-    box-sizing: border-box;
-    text-align: center;
-    padding: 1.4rem;
-    background-color: darkcyan; }
-  .form-container .buttons button {
-    background-color: orangered;
-    color: white;
-    padding: 0.4rem 1.3rem;
-    border-radius: 0.4rem;
-    transition: transform 0.3s ease;
-    font-size: 1.4rem;
-    outline: none;
-    border: none;
-    width: 50px; }
-  .form-container .buttons button:not(:last-child) {
-    margin-right: 40px; }
-  .form-container .buttons button:hover {
-    background-color: #d63a00; }
-  .form-container .buttons .prev:active,
-  .form-container .buttons .next:active {
-    transform: scale(1.1); }
 
 .galleryContainer {
   text-align: center; }

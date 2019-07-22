@@ -1,5 +1,5 @@
-.container {
-  width: 100%; }
+.layoutContainer {
+  width: 100% !important; }
 
 .form-container {
   width: 99%;

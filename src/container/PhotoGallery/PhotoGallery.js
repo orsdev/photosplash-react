@@ -11,7 +11,6 @@ class PhotoSplash extends Component {
   state = {
     search: null,
     currentPage: 1,
-    prevNext: 1,
     per_page: 14,
     spinnerTimer: false,
     searchTimer: false,

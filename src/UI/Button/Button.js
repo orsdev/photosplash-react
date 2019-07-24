@@ -3,7 +3,8 @@ import React, { Fragment } from 'react';
 const Button = (props) => {
     return (
         <Fragment>
-            <button 
+            <button
+                onClick={props.pagination} 
                 className={props.classe}>
                 {props.name}
             </button>

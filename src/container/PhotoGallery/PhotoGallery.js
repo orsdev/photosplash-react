@@ -83,6 +83,52 @@ class PhotoSplash extends Component {
     this.setState({
       error: null
     })
+  };
+
+  backButton = () => {
+
+    //get element from dom
+    let val = document.getElementById('search');
+
+    //only decrement currentPage state when greater than 0
+    if (this.state.currentPage > 0) {
+
+      this.setState((prevState) => {
+        return {
+          currentPage: prevState.currentPage - 1
+        }
+      });
+
+      //wait for currentPage state to update before making httpRequest
+      setTimeout(() => {
+        this.GetData(val);
+      }, 100)
+  
+    };
+
+  }
+
+  nextButton = () => {
+
+    //get element from dom
+    let val = document.getElementById('search');
+
+    //only increment currentPage state when lesser than 10
+    if (this.state.currentPage < 10) {
+
+      this.setState((prevState) => {
+        return {
+          currentPage: prevState.currentPage + 1
+        }
+      });
+
+      //wait for currentPage state to update before making httpRequest
+      setTimeout(() => {
+        this.GetData(val);
+      }, 100)
+  
+    };
+
   }
 
   render() {
@@ -122,8 +168,8 @@ class PhotoSplash extends Component {
       //asign navButton Button component
       navButton = (
         <div className='navContainer'>
-          <Button name='&lArr;' />
-          <Button name='&rArr;' />
+          <Button pagination={this.backButton} name='&lArr;' />
+          <Button pagination={this.nextButton} name='&rArr;' />
         </div>
       );
 

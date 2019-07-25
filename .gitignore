@@ -1,4 +1,4 @@
-node_modules
+ode_modules
 /node_modules
 .sass-cache
 /.sass-cache
@@ -6,5 +6,3 @@ node_modules
 .map
 /fonts
 .fonts
-/debug.log
-debug.log

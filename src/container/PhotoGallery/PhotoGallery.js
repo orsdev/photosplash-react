@@ -168,8 +168,8 @@ class PhotoSplash extends Component {
       //asign navButton Button component
       navButton = (
         <div className='navContainer'>
-          <Button pagination={this.backButton} name='&lArr;' />
-          <Button pagination={this.nextButton} name='&rArr;' />
+          <Button clicked={this.backButton} name='&lArr;' />
+          <Button clicked={this.nextButton} name='&rArr;' />
         </div>
       );
 

@@ -9,12 +9,12 @@ const inputField = (props) => {
         <button onClick={props.buttonSearch} className='search'><i className='fa fa-search'></i></button>
       </div>
       <div className='btn-group'>
-        <Button classe='btn btn-outline-danger' name='MEN' />
-        <Button classe='btn btn-outline-warning' name='WOMEN' />
-        <Button classe='btn btn-outline-dark' name='NATURE' />
-        <Button classe='btn btn-outline-secondary' name='TECHNOLOGY' />
-        <Button classe='btn btn-outline-primary' name='CHILDREN' />
-        <Button classe='btn btn-outline-success' name='ANIMALS' />
+        <Button clicked = {props.search} classe='btn btn-outline-danger' name='MEN' />
+        <Button clicked = {props.search} classe='btn btn-outline-warning' name='WOMEN' />
+        <Button clicked = {props.search} classe='btn btn-outline-dark' name='NATURE' />
+        <Button clicked = {props.search} classe='btn btn-outline-secondary' name='TECHNOLOGY' />
+        <Button clicked = {props.search} classe='btn btn-outline-primary' name='CHILDREN' />
+        <Button clicked = {props.search} classe='btn btn-outline-success' name='ANIMALS' />
       </div>
     </div>
   )

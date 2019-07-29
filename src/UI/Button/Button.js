@@ -4,7 +4,7 @@ const Button = (props) => {
     return (
         <Fragment>
             <button
-                onClick={props.pagination} 
+                onClick={props.clicked} 
                 className={props.classe}>
                 {props.name}
             </button>

@@ -59,7 +59,7 @@ class PhotoSplash extends Component {
     //get element from dom
     let val = document.getElementById('search');
 
-    //call function if input field value is not empty
+    //call function (make httpRequest) if input field value is not empty
     if (val.value) {
       this.GetData(val.value);
     }
@@ -72,10 +72,11 @@ class PhotoSplash extends Component {
     //variable holds targeted element textContent
     let textContent = target.textContent;
 
-    if(textContent) {
+    //call function (make httpRequest) is textContent is not true ( not empty )
+    if (textContent) {
       this.GetData(textContent);
     }
-    
+
   };
 
   KeyCodeSearch = (event) => {
@@ -86,7 +87,7 @@ class PhotoSplash extends Component {
     //listen to button keycode
     let keyCode = event.keyCode;
 
-    //if keycode is an enter button, call function
+    //if keycode is an enter button, call function (make httpRequest)
     if (keyCode === 13) {
       this.GetData(val.value);
     }

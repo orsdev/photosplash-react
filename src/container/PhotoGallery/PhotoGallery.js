@@ -25,7 +25,7 @@ class PhotoSplash extends Component {
     let key = '95b50323e9088ff9cb2368e19fc9f970a5c08b945fbc3fbc55972e1180989fbc';
 
     //build up url
-    let url = `?query=${val.value}&page=${currentPage}&per_page=${per_page}&client_id=${key}`;
+    let url = `?query=${val}&page=${currentPage}&per_page=${per_page}&client_id=${key}`;
 
     // make httpRequest and save response
     axios.get(url)
@@ -61,8 +61,21 @@ class PhotoSplash extends Component {
 
     //call function if input field value is not empty
     if (val.value) {
-      this.GetData(val);
+      this.GetData(val.value);
     }
+  };
+
+  predifinedSearch = (event) => {
+
+    let target = event.target;
+
+    //variable holds targeted element textContent
+    let textContent = target.textContent;
+
+    if(textContent) {
+      this.GetData(textContent);
+    }
+    
   };
 
   KeyCodeSearch = (event) => {
@@ -75,7 +88,7 @@ class PhotoSplash extends Component {
 
     //if keycode is an enter button, call function
     if (keyCode === 13) {
-      this.GetData(val);
+      this.GetData(val.value);
     }
   }
 
@@ -103,7 +116,7 @@ class PhotoSplash extends Component {
       setTimeout(() => {
         this.GetData(val);
       }, 100)
-  
+
     };
 
   }
@@ -126,7 +139,7 @@ class PhotoSplash extends Component {
       setTimeout(() => {
         this.GetData(val);
       }, 100)
-  
+
     };
 
   }
@@ -186,7 +199,9 @@ class PhotoSplash extends Component {
             :
             <React.Fragment>
               <InputField
-                keyCodeSearch={this.KeyCodeSearch} buttonSearch={this.ButtonSearch} />
+                keyCodeSearch={this.KeyCodeSearch}
+                buttonSearch={this.ButtonSearch}
+                search={this.predifinedSearch} />
               <div className='galleryContainer'>
                 <div className={classProp}>
                   {images}

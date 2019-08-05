@@ -67,10 +67,16 @@ class PhotoSplash extends Component {
 
   predifinedSearch = (event) => {
 
+      //get element from dom
+    let val = document.getElementById('search');
+
     let target = event.target;
 
     //variable holds targeted element textContent
     let textContent = target.textContent;
+
+    //set input field value automatically
+    val.value = textContent;
 
     //call function (make httpRequest) is textContent is not true ( not empty )
     if (textContent) {
@@ -115,7 +121,7 @@ class PhotoSplash extends Component {
 
       //wait for currentPage state to update before making httpRequest
       setTimeout(() => {
-        this.GetData(val);
+        this.GetData(val.value);
       }, 100)
 
     };
@@ -138,7 +144,7 @@ class PhotoSplash extends Component {
 
       //wait for currentPage state to update before making httpRequest
       setTimeout(() => {
-        this.GetData(val);
+        this.GetData(val.value);
       }, 100)
 
     };

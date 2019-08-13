@@ -6,6 +6,7 @@ import Spinner from '../../UI/Spinner/Spinner';
 import Gallery from '../../components/Gallery/Gallery';
 import Modal from '../../UI/Modal/Modal';
 import Button from '../../UI/Button/Button';
+import Backdrop from '../../UI/Backdrop/Backdrop';
 
 class PhotoSplash extends Component {
   state = {
@@ -67,7 +68,7 @@ class PhotoSplash extends Component {
 
   predifinedSearch = (event) => {
 
-      //get element from dom
+    //get element from dom
     let val = document.getElementById('search');
 
     let target = event.target;
@@ -159,6 +160,7 @@ class PhotoSplash extends Component {
     //variables 
     let images = null;
     let navButton = null;
+    let output = null;
 
     //assign className
     let classProp = 'spinner_gallery';
@@ -196,27 +198,39 @@ class PhotoSplash extends Component {
 
     };
 
+    //
+    if (!this.state.error) {
+      output = (
+        <React.Fragment>
+          <InputField
+            keyCodeSearch={this.KeyCodeSearch}
+            buttonSearch={this.ButtonSearch}
+            search={this.predifinedSearch} />
+          <div className='galleryContainer'>
+            <div className={classProp}>
+              {images}
+            </div>
+            {navButton}
+          </div>
+        </React.Fragment>
+      );
+    } else {
+      output = (
+        <Backdrop>
+          <Modal
+            error={this.state.error}
+            toggle={this.toggle} />
+        </Backdrop>
+      );
+    }
+
     return (
       <Layout>
-        {
-          this.state.error ?
-            <Modal
-              error={this.state.error}
-              toggle={this.toggle} />
-            :
-            <React.Fragment>
-              <InputField
-                keyCodeSearch={this.KeyCodeSearch}
-                buttonSearch={this.ButtonSearch}
-                search={this.predifinedSearch} />
-              <div className='galleryContainer'>
-                <div className={classProp}>
-                  {images}
-                </div>
-                {navButton}
-              </div>
-            </React.Fragment>
-        }
+
+        <React.Fragment>
+          {output}
+        </React.Fragment>
+
       </Layout>
     )
   }

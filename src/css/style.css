@@ -207,12 +207,6 @@
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
-.modal-pop {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  position: relative; }
-
 .modal-pop-dialog {
   background: rgba(0, 0, 0, 0.4);
   color: black;

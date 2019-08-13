@@ -251,6 +251,12 @@
     .message .close-btn:active {
       font-size: 2rem; }
 
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: relative; }
+
 .navContainer {
   background-color: #00b9b9;
   padding: 10px 0; }

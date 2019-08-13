@@ -1,12 +1,12 @@
 .modal-pop {
     width: 100vw;
     height: 100vh;
-    background: rgb(235, 230, 230);
+    background-color: rgba(0, 0, 0, 0.4);
     position: relative;
   }
   
   .modal-pop-dialog {
-    background: rgb(247, 242, 242);
+    background:rgba(0, 0, 0, 0.4);
     color: black;
     width: 99%;
     position: absolute;
@@ -23,7 +23,7 @@
   
   .message {
     position: relative;
-    padding: 1.6rem 1.6rem;
+    padding: 1.8rem 1.6rem;
     width: 200px;
     background: white;
     margin: 0 auto;

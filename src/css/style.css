@@ -273,12 +273,13 @@
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   text-align: center;
-  outline: 1px solid red;
   padding: 50px 0;
   cursor: pointer; }
   .popup img {
     max-width: 100%;
-    width: 60%;
+    width: 70%;
+    height: 400px;
+    object-fit: cover;
     box-shadow: 2px 2px 5px 1px #1a1a1a; }
   .popup span {
     position: absolute;
@@ -287,7 +288,14 @@
     color: rgba(255, 255, 255, 0.9);
     font-size: 2.2rem;
     font-weight: 600;
-    font-family: cursive; }
+    font-family: cursive;
+    transition: font-size .3s ease;
+    -webkit-transition: font-size .3s ease;
+    -moz-transition: font-size .3s ease;
+    -ms-transition: font-size .3s ease;
+    -o-transition: font-size .3s ease; }
+    .popup span:active {
+      font-size: 2.3rem; }
 
 @media (max-width: 650px) {
   input[type="search"] {

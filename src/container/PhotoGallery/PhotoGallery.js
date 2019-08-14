@@ -7,6 +7,7 @@ import Gallery from '../../components/Gallery/Gallery';
 import Modal from '../../UI/Modal/Modal';
 import Button from '../../UI/Button/Button';
 import Backdrop from '../../UI/Backdrop/Backdrop';
+import Popup from '../../UI/Popup/Popup';
 
 class PhotoSplash extends Component {
   state = {
@@ -15,7 +16,9 @@ class PhotoSplash extends Component {
     per_page: 14,
     spinnerTimer: false,
     searchTimer: false,
-    error: null
+    error: null,
+    showPopup: false,
+    popupImage: null
   };
 
   GetData = (val) => {
@@ -152,6 +155,29 @@ class PhotoSplash extends Component {
 
   }
 
+  imagePopup = (event) => {
+
+    //get selected dom element
+    let target = event.target;
+
+    //update state
+    this.setState({
+      popupImage: target.src,
+      showPopup: true
+    })
+
+  };
+
+  closePopup = () => {
+
+    //update state
+    this.setState({
+      popupImage: null,
+      showPopup: false
+    })
+
+  };
+
   render() {
 
     //copy state
@@ -183,6 +209,7 @@ class PhotoSplash extends Component {
             key={img.id}
             alt={img.id}
             id={index}
+            getSrc={this.imagePopup}
             pic={img.urls.regular} />
         )
       });
@@ -228,7 +255,14 @@ class PhotoSplash extends Component {
       <Layout>
 
         <React.Fragment>
-          {output}
+          {this.state.showPopup ?
+            <Backdrop >
+              <Popup 
+                src={this.state.popupImage}
+                close={this.closePopup} />
+            </Backdrop>
+            : output
+          }
         </React.Fragment>
 
       </Layout>

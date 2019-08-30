@@ -32,8 +32,12 @@
 
   button.search:active {
     transform: scale(1.1);
-    transition: all 0.1s linear;
-  }
+    transition: all 0.001s linear;
+    -webkit-transition: all 0.001s linear;
+    -moz-transition: all 0.001s linear;
+    -ms-transition: all 0.001s linear;
+    -o-transition: all 0.001s linear;
+}
   button.search:focus {
     outline: none !important;
     border: none !important;

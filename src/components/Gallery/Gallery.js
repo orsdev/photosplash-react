@@ -1,13 +1,25 @@
-import React from 'react';
+import React from "react";
 
-const Gallery = (props) => {
-if(props.searcedImages !== 0) {
- return (
-    <div className = { `gallery__item--${props.id}`}>
-      <img src={props.pic} alt={props.alt} onClick={props.getSrc} />
-    </div>
- );
-}
-}
+const Gallery = props => {
+  //variable will be re-assign to hold a value
+  let image = null;
+
+  //copy state
+  let copyState = { ...props.image };
+
+  //when search property is not empty, return map values
+  if (props.searchTimer) {
+    //assign new value to images and return new element
+    image = copyState.search.map((img, index) => {
+      return (
+        <div key={img.id} className={`gallery__item--${index}`}>
+          <img src={img.urls.regular} alt={img.alt} onClick={props.getsrc} />
+        </div>
+      );
+    });
+  }
+
+  return image;
+};
 
 export default Gallery;

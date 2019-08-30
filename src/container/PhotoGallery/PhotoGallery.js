@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import axios from '../../axiosInstance/axiosInstance';
-import Layout from '../../components/Layout/Layout';
-import InputField from '../../components/InputField/InputField';
-import Spinner from '../../UI/Spinner/Spinner';
-import Gallery from '../../components/Gallery/Gallery';
-import Modal from '../../UI/Modal/Modal';
-import Button from '../../UI/Button/Button';
-import Backdrop from '../../UI/Backdrop/Backdrop';
-import Popup from '../../UI/Popup/Popup';
+import React, { Component } from "react";
+import axios from "../../axiosInstance/axiosInstance";
+import Layout from "../../components/Layout/Layout";
+import InputField from "../../components/InputField/InputField";
+import Spinner from "../../UI/Spinner/Spinner";
+import Gallery from "../../components/Gallery/Gallery";
+import Modal from "../../UI/Modal/Modal";
+import Button from "../../UI/Button/Button";
+import Backdrop from "../../UI/Backdrop/Backdrop";
+import Popup from "../../UI/Popup/Popup";
 
 class PhotoSplash extends Component {
   state = {
@@ -21,20 +21,20 @@ class PhotoSplash extends Component {
     popupImage: null
   };
 
-  GetData = (val) => {
-
-    //destruct 
+  GetData = val => {
+    //destruct
     const { currentPage, per_page } = this.state;
 
-    let key = '95b50323e9088ff9cb2368e19fc9f970a5c08b945fbc3fbc55972e1180989fbc';
+    let key =
+      "95b50323e9088ff9cb2368e19fc9f970a5c08b945fbc3fbc55972e1180989fbc";
 
     //build up url
     let url = `?query=${val}&page=${currentPage}&per_page=${per_page}&client_id=${key}`;
 
     // make httpRequest and save response
-    axios.get(url)
-      .then((res) => {
-
+    axios
+      .get(url)
+      .then(res => {
         this.setState({
           spinnerTimer: true,
           searchTimer: false,
@@ -49,19 +49,17 @@ class PhotoSplash extends Component {
             spinnerTimer: false
           });
         }, 1100);
-
       })
       .catch(error => {
         this.setState({
           error: `${error}`
-        })
+        });
       });
   };
 
   ButtonSearch = () => {
-
     //get element from dom
-    let val = document.getElementById('search');
+    let val = document.getElementById("search");
 
     //call function (make httpRequest) if input field value is not empty
     if (val.value) {
@@ -69,10 +67,9 @@ class PhotoSplash extends Component {
     }
   };
 
-  predifinedSearch = (event) => {
-
+  predifinedSearch = event => {
     //get element from dom
-    let val = document.getElementById('search');
+    let val = document.getElementById("search");
 
     let target = event.target;
 
@@ -86,13 +83,11 @@ class PhotoSplash extends Component {
     if (textContent) {
       this.GetData(textContent);
     }
-
   };
 
-  KeyCodeSearch = (event) => {
-
+  KeyCodeSearch = event => {
     //get element from dom
-    let val = document.getElementById('search');
+    let val = document.getElementById("search");
 
     //listen to button keycode
     let keyCode = event.keyCode;
@@ -101,62 +96,53 @@ class PhotoSplash extends Component {
     if (keyCode === 13) {
       this.GetData(val.value);
     }
-  }
+  };
 
   toggle = () => {
     this.setState({
       error: null
-    })
+    });
   };
 
   backButton = () => {
-
     //get element from dom
-    let val = document.getElementById('search');
+    let val = document.getElementById("search");
 
     //only decrement currentPage state when greater than 0
     if (this.state.currentPage > 0) {
-
-      this.setState((prevState) => {
+      this.setState(prevState => {
         return {
           currentPage: prevState.currentPage - 1
-        }
+        };
       });
 
       //wait for currentPage state to update before making httpRequest
       setTimeout(() => {
         this.GetData(val.value);
-      }, 100)
-
-    };
-
-  }
+      }, 100);
+    }
+  };
 
   nextButton = () => {
-
     //get element from dom
-    let val = document.getElementById('search');
+    let val = document.getElementById("search");
 
     //only increment currentPage state when lesser than 10
     if (this.state.currentPage < 10) {
-
-      this.setState((prevState) => {
+      this.setState(prevState => {
         return {
           currentPage: prevState.currentPage + 1
-        }
+        };
       });
 
       //wait for currentPage state to update before making httpRequest
       setTimeout(() => {
         this.GetData(val.value);
-      }, 100)
+      }, 100);
+    }
+  };
 
-    };
-
-  }
-
-  imagePopup = (event) => {
-
+  imagePopup = event => {
     //get selected dom element
     let target = event.target;
 
@@ -164,32 +150,25 @@ class PhotoSplash extends Component {
     this.setState({
       popupImage: target.src,
       showPopup: true
-    })
+    });
 
   };
 
   closePopup = () => {
-
     //update state
     this.setState({
       popupImage: null,
       showPopup: false
-    })
-
+    });
   };
 
   render() {
-
-    //copy state
-    let copyState = { ...this.state };
-
-    //variables 
-    let images = null;
     let navButton = null;
-    let output = null;
+    let result = null;
+    let images = null;
 
     //assign className
-    let classProp = 'spinner_gallery';
+    let classProp = "spinner_gallery";
 
     //when true, assign spinner component to images
     if (this.state.spinnerTimer) {
@@ -198,76 +177,63 @@ class PhotoSplash extends Component {
 
     //when search property is not empty, return map values
     if (this.state.searchTimer) {
-
       //assign new className
-      classProp = 'gallery';
+      classProp = "gallery";
 
       //assign new value to images
-      images = copyState.search.map((img, index) => {
-        return (
-          <Gallery
-            key={img.id}
-            alt={img.id}
-            id={index}
-            getSrc={this.imagePopup}
-            pic={img.urls.regular} />
-        )
-      });
+      images = (
+        <Gallery
+          getsrc={this.imagePopup}
+          searchTimer={this.state.searchTimer}
+          image={this.state}
+        />
+      );
 
       //asign navButton Button component
       navButton = (
-        <div className='navContainer'>
-          <Button clicked={this.backButton} name='&lArr;' />
-          <Button clicked={this.nextButton} name='&rArr;' />
+        <div className="navContainer">
+          <Button clicked={this.backButton} name="&lArr;" />
+          <Button clicked={this.nextButton} name="&rArr;" />
         </div>
-      );
-
-
-    };
-
-    //
-    if (!this.state.error) {
-      output = (
-        <React.Fragment>
-          <InputField
-            keyCodeSearch={this.KeyCodeSearch}
-            buttonSearch={this.ButtonSearch}
-            search={this.predifinedSearch} />
-          <div className='galleryContainer'>
-            <div className={classProp}>
-              {images}
-            </div>
-            {navButton}
-          </div>
-        </React.Fragment>
-      );
-    } else {
-      output = (
-        <Backdrop>
-          <Modal
-            error={this.state.error}
-            toggle={this.toggle} />
-        </Backdrop>
       );
     }
 
+    /*
+      assign result a new value, show backdrop is error exit
+      if error doesn't exit, show input field
+    */
+    result = (
+      <React.Fragment>
+        <Backdrop error={this.state.error} toggle={this.toggle}>
+          <Modal error={this.state.error} toggle={this.toggle} />
+        </Backdrop>
+
+        <InputField
+          keyCodeSearch={this.KeyCodeSearch}
+          buttonSearch={this.ButtonSearch}
+          search={this.predifinedSearch}
+        />
+        <div className="galleryContainer">
+          <div className={classProp}>{images}</div>
+          {navButton}
+        </div>
+      </React.Fragment>
+    );
+
     return (
       <Layout>
-
         <React.Fragment>
-          {this.state.showPopup ?
-            <Backdrop >
-              <Popup 
-                src={this.state.popupImage}
-                close={this.closePopup} />
+          {this.state.showPopup ? (
+            <Backdrop popup={true}>
+              <Popup src={this.state.popupImage} close={this.closePopup} />
             </Backdrop>
-            : output
-          }
+          ) : (
+            result
+          )}
         </React.Fragment>
-
       </Layout>
-    )
+    );
   }
 }
 
-export default PhotoSplash; 
+export default PhotoSplash;

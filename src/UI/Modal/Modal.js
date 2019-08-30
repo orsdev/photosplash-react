@@ -1,20 +1,21 @@
-import React, { memo } from 'react';
+import React, { memo } from "react";
 
-const Modal = (props) => {
-
+const Modal = props => {
   let message = null;
 
   if (props.error) {
     message = (
-        <div className='modal-pop-dialog' onClick={props.toggle}>
-          <div className='message'>
-            <p> {props.error} </p>
-            <button onClick={props.toggle} className='close-btn'>x</button>
-          </div>
+      <div className="modal-pop-dialog" onClick={props.toggle}>
+        <div className="message">
+          <p> {props.error} </p>
+          <button onClick={props.toggle} className="close-btn">
+            x
+          </button>
         </div>
-    )
+      </div>
+    );
   }
   return message;
-}
+};
 
 export default memo(Modal);

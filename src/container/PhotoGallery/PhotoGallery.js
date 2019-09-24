@@ -79,10 +79,11 @@ class PhotoSplash extends Component {
     //set input field value automatically
     val.value = textContent;
 
-    //call function (make httpRequest) is textContent is not true ( not empty )
+    //call function (make httpRequest) if textContent is  true ( not empty )
     if (textContent) {
       this.GetData(textContent);
     }
+
   };
 
   KeyCodeSearch = event => {
@@ -92,8 +93,12 @@ class PhotoSplash extends Component {
     //listen to button keycode
     let keyCode = event.keyCode;
 
-    //if keycode is an enter button, call function (make httpRequest)
-    if (keyCode === 13) {
+    /*
+    if keycode is an enter button, 
+    and input field is not empty,
+    call function (make httpRequest)
+    */
+    if (keyCode === 13 && val.value) {
       this.GetData(val.value);
     }
   };
@@ -199,7 +204,7 @@ class PhotoSplash extends Component {
     }
 
     /*
-      assign result a new value, show backdrop is error exit
+      assign result a new value, show backdrop if error exit
       if error doesn't exit, show input field
     */
     result = (

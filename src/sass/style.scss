@@ -8,3 +8,13 @@
 @import 'components/Popup';
 
 @import 'components/Responsive';
+
+body {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}

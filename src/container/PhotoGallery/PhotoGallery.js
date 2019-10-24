@@ -14,19 +14,20 @@ import { connect } from 'react-redux';
 class PhotoSplash extends Component {
  state = {
   per_page: 14,
+  currentPage: 1,
   showPopup: false,
   popupImage: null,
  };
 
  GetData = val => {
   //destruct
-  const { per_page } = this.state;
+  const { per_page, currentPage } = this.state;
 
   let key =
    "95b50323e9088ff9cb2368e19fc9f970a5c08b945fbc3fbc55972e1180989fbc";
 
   //build up url
-  let url = `?query=${val}&page=${this.props.currentPage}&per_page=${per_page}&client_id=${key}`;
+  let url = `?query=${val}&page=${currentPage}&per_page=${per_page}&client_id=${key}`;
 
   // make httpRequest
   this.props.onMakeRequest(url);
@@ -85,9 +86,13 @@ class PhotoSplash extends Component {
   let val = document.getElementById("search");
 
   //only decrement currentPage state when greater than 0
-  if (this.props.currentPage > 1) {
+  if (this.state.currentPage > 1) {
 
-   this.props.onDecrement();
+   this.setState(function (prevState) {
+    return {
+     currentPage: prevState.currentPage - 1
+    }
+   })
 
    //make httpRequest
    this.GetData(val.value);
@@ -100,9 +105,13 @@ class PhotoSplash extends Component {
   let val = document.getElementById("search");
 
   //only increment currentPage state when lesser than 10
-  if (this.props.currentPage < 10) {
+  if (this.state.currentPage > 0 && this.state.currentPage < 15) {
 
-   this.props.onIncrement();
+   this.setState(function (prevState) {
+    return {
+     currentPage: prevState.currentPage + 1
+    }
+   })
 
    //make httpRequest
    this.GetData(val.value);
@@ -161,8 +170,8 @@ class PhotoSplash extends Component {
      <Button clicked={this.nextButton} name="&rArr;" />
     </div>
    );
-  }
 
+  }
   /*
     assign result a new value, show backdrop if error exit
     if error doesn't exit, show input field
@@ -203,7 +212,6 @@ class PhotoSplash extends Component {
 
 const mapStateToProps = (state) => {
  return {
-  currentPage: state.currentPage,
   searchTimer: state.searchTimer,
   spinnerTimer: state.spinnerTimer,
   error: state.error,
@@ -213,8 +221,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
  return {
-  onIncrement: () => dispatch(actions.increment()),
-  onDecrement: () => dispatch(actions.decrement()),
   onMakeRequest: (url) => dispatch(actions.makeRequest(url)),
   onERRORNULL: () => dispatch(actions.errorNull()),
  }

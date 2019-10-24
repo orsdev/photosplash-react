@@ -1,7 +1,6 @@
 import * as actionType from '../actions/actionTypes';
 
 const initialState = {
- currentPage: 1,
  unsplashImages: null,
  error: null,
  searchTimer: false,
@@ -11,16 +10,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
  switch (action.type) {
-  case actionType.PREV_PAGE:
-   return {
-    ...state,
-    currentPage: state.currentPage - 1
-   }
-  case actionType.NEXT_PAGE:
-   return {
-    ...state,
-    currentPage: state.currentPage + 1
-   }
   case actionType.AJAX_REQUEST:
    return {
     ...state,

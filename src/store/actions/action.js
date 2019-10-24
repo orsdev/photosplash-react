@@ -1,18 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
 import axios from '../../axiosInstance/axiosInstance';
 
-export const decrement = () => {
- return {
-  type: actionTypes.PREV_PAGE
- }
-}
-
-export const increment = () => {
- return {
-  type: actionTypes.NEXT_PAGE
- }
-}
-
 export const setRequest = () => {
  return {
   type: actionTypes.AJAX_REQUEST

@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions/action';
 
 const Gallery = props => {
  //variable will be re-assign to hold a value

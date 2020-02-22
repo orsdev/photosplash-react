@@ -19,6 +19,15 @@ class PhotoSplash extends Component {
   popupImage: null,
  };
 
+ componentDidUpdate(prevProps, prevState) {
+  if (this.state.currentPage !== prevState.currentPage) {
+   //get element from dom
+   let val = document.getElementById("search");
+   //make httpRequest
+   this.GetData(val.value);
+  }
+ }
+
  GetData = val => {
   //destruct
   const { per_page, currentPage } = this.state;
@@ -82,8 +91,6 @@ class PhotoSplash extends Component {
 
 
  backButton = () => {
-  //get element from dom
-  let val = document.getElementById("search");
 
   //only decrement currentPage state when greater than 0
   if (this.state.currentPage > 1) {
@@ -93,16 +100,10 @@ class PhotoSplash extends Component {
      currentPage: prevState.currentPage - 1
     }
    })
-
-   //make httpRequest
-   this.GetData(val.value);
-
   }
  };
 
  nextButton = () => {
-  //get element from dom
-  let val = document.getElementById("search");
 
   //only increment currentPage state when lesser than 10
   if (this.state.currentPage > 0 && this.state.currentPage < 15) {
@@ -112,9 +113,6 @@ class PhotoSplash extends Component {
      currentPage: prevState.currentPage + 1
     }
    })
-
-   //make httpRequest
-   this.GetData(val.value);
   }
  };
 
